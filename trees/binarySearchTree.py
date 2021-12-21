@@ -63,7 +63,6 @@ class BinarySearchTree:
         self.__postorder(root.right)
         print(root.data, end=' ')
 
-
     def find(self, target):
         curr = self.root
 
@@ -75,4 +74,14 @@ class BinarySearchTree:
             else:
                 return True
         return False
+
+    def height(self):
+        return self.__height(self.root)
+
+    def __height(self, root):
+        if root is None:
+            return -1
+        if root.left is None and root.right is None:
+            return 0
+        return 1 + max(self.__height(root.left), self.__height(root.right))
 
