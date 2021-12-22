@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
 
     def __init__(self, data=None):
@@ -127,3 +129,18 @@ class BinarySearchTree:
             return False
         return self.__isBST(root.left, low, root.data - 1) and self.__isBST(root.right, root.data + 1, high)
 
+    def levelOrder(self):
+        if self.root is None:
+            return
+        
+        queue = deque()
+        queue.append(self.root)
+
+        while queue:
+            frontNode = queue.popleft()
+            print(frontNode.data, end=' ')
+            if frontNode.left is not None:
+                queue.append(frontNode.left)
+            if frontNode.right is not None:
+                queue.append(frontNode.right)
+        print()
