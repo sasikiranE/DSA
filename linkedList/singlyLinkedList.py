@@ -119,7 +119,7 @@ class LinkedList:
     
     def getKthfromEnd(self, k: int):
         if k > self.count or k < 1:
-            return "invalid argument"
+            raise Exception("Invalid argument for k.", k)
 
         a = b = self.head
         for i in range(k - 1):
