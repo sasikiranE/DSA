@@ -23,11 +23,14 @@ class BinarySearchTree:
                     curr.left = newNode
                     return
                 curr = curr.left
-            else:
+            elif data > curr.data:
                 if curr.right is None:
                     curr.right = newNode
                     return
                 curr = curr.right
+            else:
+                # case when data already present.
+                return
     
     # Depth First Traversals.
     def preorder(self):
