@@ -85,3 +85,18 @@ class BinarySearchTree:
             return 0
         return 1 + max(self.__height(root.left), self.__height(root.right))
 
+    def getMin(self):
+        if self.root is None:
+            raise Exception("Cannot get mininum value. Tree is empty!")
+        curr = self.root
+        while curr.left is not None:
+            curr = curr.left
+        return curr.data
+
+    def getMax(self):
+        if self.root is None:
+            raise Exception("Cannot get maximum value. Tree is empty!")
+        curr = self.root
+        while curr.right is not None:
+            curr = curr.right
+        return curr.data
