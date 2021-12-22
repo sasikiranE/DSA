@@ -34,40 +34,6 @@ class BinarySearchTree:
                 # case when data already present.
                 return
     
-    # Depth First Traversals.
-    def preorder(self):
-        self.__preorder(self.root)
-        print()
-
-    def __preorder(self, root):
-        if root is None:
-            return
-        print(root.data, end=' ')
-        self.__preorder(root.left)
-        self.__preorder(root.right)
-    
-    def inorder(self):
-        self.__inorder(self.root)
-        print()
-
-    def __inorder(self, root):
-        if root is None:
-            return
-        self.__inorder(root.left)
-        print(root.data, end=' ')
-        self.__inorder(root.right)
-
-    def postorder(self):
-        self.__postorder(self.root)
-        print()
-
-    def __postorder(self, root):
-        if root is None:
-            return
-        self.__postorder(root.left)
-        self.__postorder(root.right)
-        print(root.data, end=' ')
-
     def find(self, target):
         curr = self.root
 
@@ -129,6 +95,41 @@ class BinarySearchTree:
             return False
         return self.__isBST(root.left, low, root.data - 1) and self.__isBST(root.right, root.data + 1, high)
 
+    # Depth First Traversals.
+    def preorder(self):
+        self.__preorder(self.root)
+        print()
+
+    def __preorder(self, root):
+        if root is None:
+            return
+        print(root.data, end=' ')
+        self.__preorder(root.left)
+        self.__preorder(root.right)
+    
+    def inorder(self):
+        self.__inorder(self.root)
+        print()
+
+    def __inorder(self, root):
+        if root is None:
+            return
+        self.__inorder(root.left)
+        print(root.data, end=' ')
+        self.__inorder(root.right)
+
+    def postorder(self):
+        self.__postorder(self.root)
+        print()
+
+    def __postorder(self, root):
+        if root is None:
+            return
+        self.__postorder(root.left)
+        self.__postorder(root.right)
+        print(root.data, end=' ')
+
+    # Breadth First Traversal.
     def levelOrder(self):
         if self.root is None:
             return
