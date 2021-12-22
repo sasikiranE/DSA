@@ -112,3 +112,15 @@ class BinarySearchTree:
             return root1.data == root2.data and self.__equals(root1.left, root2.left) and self.__equals(root1.right, root2.right)
         
         return False
+
+    def isBinarySearchTree(self):
+        inf = 1e9 + 7
+        return self.__isBST(self.root, -inf, inf)
+
+    def __isBST(self, root, low, high):
+        if root is None:
+            return True
+        if root.data < low or root.data > high:
+            return False
+        return self.__isBST(root.left, low, root.data - 1) and self.__isBST(root.right, root.data + 1, high)
+
