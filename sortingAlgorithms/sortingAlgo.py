@@ -70,7 +70,25 @@ def mergeSort(arr: list):
     merge(left, right, arr)
 
 
+def partition(arr, start, end):
+    pivot = arr[end]
+    boundary = start - 1
+    for i in range(start, end + 1):
+        if arr[i] <= pivot:
+            boundary += 1
+            arr[i], arr[boundary] = arr[boundary], arr[i]
+    return boundary
+
+
+def quickSort(arr, start, end):
+    if start >= end:
+        return
+    boudary = partition(arr, start, end)
+    quickSort(arr, start, boudary - 1)
+    quickSort(arr, boudary + 1, end)
+
+
 nums = [3, 6, 2, 9, 4, 5, -1, 10, 3, 2]
 
-mergeSort(nums)
+quickSort(nums, 0, len(nums) - 1)
 print(nums)
