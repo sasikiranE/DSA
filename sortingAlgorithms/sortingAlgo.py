@@ -34,3 +34,43 @@ def insertionSort(arr: list):
 
         arr[j + 1] = curr
 
+
+def merge(left, right, arr):
+    i = j = k = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:
+            arr[k] = left[i]
+            k += 1
+            i += 1
+        else:
+            arr[k] = right[j]
+            k += 1
+            j += 1
+    while i < len(left):
+        arr[k] = left[i]
+        k += 1
+        i += 1
+    while j < len(right):
+        arr[k] = right[j]
+        k += 1
+        j += 1
+
+
+def mergeSort(arr: list):
+    if len(arr) < 2:
+        return
+    # divide into two halfs.
+    mid = len(arr) // 2
+    left = arr[:mid]
+    right = arr[mid:]
+    # sort two halfs.
+    mergeSort(left)
+    mergeSort(right)
+    # merge two halfs.
+    merge(left, right, arr)
+
+
+nums = [3, 6, 2, 9, 4, 5, -1, 10, 3, 2]
+
+mergeSort(nums)
+print(nums)
